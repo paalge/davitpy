@@ -85,9 +85,10 @@ class MapConv(object):
         # This is the way I'm setting stuff up to avoid confusion of reading and plotting seperately.
         # Just give the date/hemi and the code reads the corresponding rec
         endTime = startTime + datetime.timedelta(minutes=2)
-        grdPtr = sdDataOpen(startTime, hemi, eTime=endTime)
+        grdPtr = sdDataOpen(startTime, hemi=hemi, eTime=endTime)
         self.grdData = sdDataReadRec(grdPtr)
-        mapPtr = sdDataOpen(startTime, hemi, eTime=endTime, fileType='mapex')
+        mapPtr = sdDataOpen(startTime, hemi=hemi, eTime=endTime, 
+                            fileType='mapex')
         self.mapData = sdDataReadRec(mapPtr)
 
     def overlayGridVel(self, pltColBar=True, 
